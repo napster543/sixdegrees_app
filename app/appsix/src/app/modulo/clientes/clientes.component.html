@@ -1,0 +1,41 @@
+
+<form >
+    <div class="input-group mb-3">
+    
+        <input type="text" class="form-control" placeholder="Ingresa palabra a buscar" id="buscador" name="filterCliente" [(ngModel)]="filterCliente">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="FiltrarID()">OK</button>
+          <button class="btn btn-danger" type="button" (click)="ListarProductos()">Cancel</button>
+        </div>
+      </div>
+    
+</form>
+
+<div class="alert alert-success">
+    <strong>Success!</strong> Al ingresar un nombre se filtra automanticamente
+  </div>
+  <div class="alert alert-warning">
+    <strong>warning!</strong> Al ingresar un 1 y presionar el boton <strong>OK!</strong> se filtra desde el servicio
+  </div>
+
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              
+          </tr>
+      </thead>
+      <tbody>
+        
+            <tr *ngFor="let ListCliente of ListClientes| filter:filterCliente;  let i = index">
+                <td>{{ListCliente.usuID}}</td>
+                <td>{{ListCliente.nombre}}</td>
+                <td>{{ListCliente.apellido}}</td>            
+            </tr>
+        
+      </tbody>
+    </table>
+  </div>
